@@ -4,6 +4,7 @@ defmodule AtgoffaUi.Teams.Team do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
+  @derive [Poison.Encoder]
 
   schema "teams" do
     field :team_id, :integer
@@ -19,8 +20,8 @@ defmodule AtgoffaUi.Teams.Team do
 
   def changeset(team, params \\ %{}) do
     team
-    |> cast(params, [:team_id, :status, :last_updated, :team_name, :other_team_name, :nickname, :team_captain])
-    |> validate_required([:team_id, :status, :last_updated, :team_name])
+    |> cast(params, [:team_id, :status, :team_name, :other_team_name, :nickname, :team_captain])
+    |> validate_required([:team_id, :status, :team_name])
     |> validate_length(:team_name, max: 160)
     |> validate_length(:other_team_name, max: 160)
     |> validate_length(:nickname, max: 160)

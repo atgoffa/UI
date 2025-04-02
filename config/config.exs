@@ -31,6 +31,8 @@ config :atgoffa_ui, AtgoffaUiWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :atgoffa_ui, AtgoffaUi.Mailer, adapter: Swoosh.Adapters.Local
 
+config :atgoffa_ui, :api_token, System.get_env("API_TOKEN")
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",

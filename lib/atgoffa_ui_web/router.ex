@@ -23,6 +23,13 @@ defmodule AtgoffaUiWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api", AtgoffaUiWeb do
+    pipe_through :api
+
+    get "/teams", TeamsController, :index
+    post "/teams", TeamsController, :create_teams
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", AtgoffaUiWeb do
   #   pipe_through :api
